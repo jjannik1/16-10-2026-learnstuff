@@ -1,0 +1,5 @@
+/* src/main/resources/css/parent-override.css */
+.button {
+    -fx-background-color: #9333ea;
+    -fx-text-fill: #ffffff;
+}

@@ -1,0 +1,19 @@
+/* src/main/resources/css/variables.css */
+.root {
+    /* Paleta corporativa (Constantes personalizadas sin -fx-) */
+    brand-primary: #0284c7;
+    brand-primary-hover: derive(brand-primary, 20%);
+    brand-primary-pressed: derive(brand-primary, -20%);
+    brand-danger: #dc2626;
+    brand-success: #16a34a;
+    neutral-bg: #f8fafc;
+    surface: #ffffff;
+    border-subtle: #cbd5e1;
+    text-primary: #0f172a;
+    text-muted: #64748b;
+
+    /* Propiedades nativas del sistema JavaFX */
+    -fx-font-family: "Segoe UI", -apple-system, sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: neutral-bg;
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<VBox prefHeight="650.0" prefWidth="950.0" spacing="10.0"
+      stylesheets="@enterprise-theme.css"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.javafx_css.HelloController">
+
+    <!-- Cabecera -->
+    <HBox alignment="CENTER_LEFT" styleClass="top-bar">
+        <children>
+            <Label styleClass="top-bar-title" text="ERP Corporativo - Gestión de Pedidos" />
+        </children>
+    </HBox>
+
+    <!-- Área de Trabajo Dividida -->
+    <SplitPane dividerPositions="0.6" VBox.vgrow="ALWAYS">
+        <items>
+            <!-- Panel Izquierdo: Tabla de Órdenes -->
+            <VBox spacing="10.0" styleClass="card">
+                <children>
+                    <Label styleClass="section-header" text="Listado de Pedidos" />
+                    <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colId" prefWidth="110.0" text="Nº Pedido" />
+                            <TableColumn fx:id="colCustomer" prefWidth="220.0" text="Cliente" />
+                            <TableColumn fx:id="colAmount" prefWidth="120.0" text="Importe (€)" />
+                            <TableColumn fx:id="colUrgent" prefWidth="90.0" text="Prioritario" />
+                        </columns>
+                    </TableView>
+                </children>
+            </VBox>
+
+            <!-- Panel Derecho: Formulario de Detalle y Demostraciones CSS -->
+            <VBox spacing="14.0" styleClass="card">
+                <children>
+                    <Label styleClass="section-header" text="Detalle de Pedido" />
+
+                    <!-- Formulario en Rejilla -->
+                    <GridPane hgap="8.0" vgap="10.0">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="90.0" />
+                            <ColumnConstraints hgrow="ALWAYS" />
+                        </columnConstraints>
+                        <children>
+                            <Label text="Nº Pedido:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                            <TextField fx:id="txtOrderId" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+                            <Label text="Cliente:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                            <TextField fx:id="txtCustomer" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                            <Label text="Importe:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                            <TextField fx:id="txtAmount" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+                            <Label text="Prioridad:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                            <CheckBox fx:id="chkUrgent" text="Urgente" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+                        </children>
+                    </GridPane>
+
+                    <!-- Barra de Acciones del Formulario -->
+                    <HBox alignment="CENTER_LEFT" spacing="8.0" styleClass="action-bar">
+                        <children>
+                            <Button defaultButton="true" onAction="#handleSave" styleClass="btn-primary" text="Guardar" />
+                            <Button fx:id="btnDelete" id="btn-delete" onAction="#handleDelete" text="Eliminar" />
+                            <Button onAction="#handleClear" text="Limpiar" />
+                        </children>
+                    </HBox>
+
+                    <!-- Zona Demostración: Jerarquía y Precedencia de CSS -->
+                    <VBox fx:id="parentScopeBox" spacing="8.0"
+                          style="-fx-border-color: #cbd5e1; -fx-border-style: dashed; -fx-padding: 10px;">
+                        <children>
+                            <Label style="-fx-font-weight: bold;" text="Prueba de Precedencia CSS:" />
+                            <!-- Botón con Inline Style (Máxima prioridad) -->
+                            <Button fx:id="btnInlineDemo" text="Gana Inline Style (Amarillo)"
+                                    style="-fx-background-color: #eab308; -fx-text-fill: black;" />
+                            <!-- Botón afectado por hoja de estilo añadida a su Parent contenedor -->
+                            <Button fx:id="btnParentDemo" text="Estilo vía Parent Override (Púrpura)" />
+                        </children>
+                    </VBox>
+                </children>
+            </VBox>
+        </items>
+        <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+        </VBox.margin>
+    </SplitPane>
+</VBox>
